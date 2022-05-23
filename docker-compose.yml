@@ -65,6 +65,7 @@ services:
     volumes:
       - "db-data:/var/lib/postgresql/data"
       - "./healthchecks:/healthchecks"
+    ports: ["5432"]
     healthcheck:
       test: /healthchecks/postgres.sh
       interval: "5s"
