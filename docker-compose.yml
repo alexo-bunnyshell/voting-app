@@ -72,6 +72,17 @@ services:
     networks:
       - back-tier
 
+  bunny:
+    build: ./bunny
+    ports:
+        - '3000:3000'
+    # We can override any env values here.
+    # By default the .env in the project root will be loaded as the environment for all containers
+    environment:
+        APP_DEBUG: "true"
+        APP_SECRET: "my name is NEO"
+       
+
 volumes:
   db-data:
 
