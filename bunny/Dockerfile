@@ -1,4 +1,4 @@
-FROM node:16
+FROM --platform=linux/arm64 node:16
 WORKDIR /usr/src/app
 COPY package*.json app.js ./
 COPY templates/* ./templates/
