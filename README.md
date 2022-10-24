@@ -1,4 +1,4 @@
-Example Voting App
+Example Voting App - AO
 =========
 
 A simple distributed application running across multiple Docker containers.
