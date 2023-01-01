@@ -31,26 +31,6 @@ spec:
         spec:
             containers:
                 -
-                    env:
-                        -
-                            name: BNS_DEPLOY_TIMESTAMP
-                            value: '2023-01-01T20:53:20+00:00'
-                    envFrom:
-                        -
-                            configMapRef:
-                                name: project-variables
-                        -
-                            configMapRef:
-                                name: environment-variables
-                        -
-                            configMapRef:
-                                name: bns-builtin-env-vars
-                        -
-                            configMapRef:
-                                name: env-file-bunny
-                        -
-                            configMapRef:
-                                name: bns-builtin-bunny-env-vars
                     image: '904643107945.dkr.ecr.eu-west-1.amazonaws.com/bns-6nc6mc_1-1-491898634-61322cb96410d2831a592d0163d2a608:6401cdea713bf392e738c991d4e10371b207fa6a'
                     imagePullPolicy: IfNotPresent
                     name: bunny
@@ -58,27 +38,7 @@ spec:
                         -
                             containerPort: 3000
                             protocol: TCP
-                    resources:
-                        limits:
-                            cpu: 500m
-                            ephemeral-storage: 1Gi
-                            memory: 2Gi
-                        requests:
-                            cpu: 500m
-                            ephemeral-storage: 1Gi
-                            memory: 2Gi
-                    securityContext:
-                        capabilities:
-                            drop:
-                                - NET_RAW
-                    terminationMessagePath: /dev/termination-log
-                    terminationMessagePolicy: File
-            dnsPolicy: ClusterFirst
             restartPolicy: Always
-            schedulerName: default-scheduler
-            securityContext:
-                seccompProfile:
-                    type: RuntimeDefault
             terminationGracePeriodSeconds: 30
             tolerations:
                 -
