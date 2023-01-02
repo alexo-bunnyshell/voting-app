@@ -5,10 +5,7 @@ items:
   metadata:
     generation: 1
     labels:
-      app.bunnyshell.com/is-docker-compose: bns
-      app.kubernetes.io/managed-by: Bunnyshell
-      app.kubernetes.io/part-of: test-helm-vote
-    name: test-helm-vote-ingress
+    name: env-unique-ingress
   spec:
     ingressClassName: bns-nginx
     rules:
