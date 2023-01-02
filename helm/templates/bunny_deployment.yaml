@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:   
+    labels:
+        io.kompose.service: bunny
+    name: bunny
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 0
+    selector:
+        matchLabels:
+            io.kompose.service: bunny
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                io.kompose.service: bunny
+        spec:
+            containers:
+                -
+                    image: {{ .Values.images.bunny}}
+                    imagePullPolicy: IfNotPresent
+                    name: bunny
+                    ports:
+                        -
+                            containerPort: 3000
+                            protocol: TCP
+            restartPolicy: Always
+            terminationGracePeriodSeconds: 30
+            tolerations:
+                -
+                    effect: NoSchedule
+                    key: kubernetes.io/arch
+                    operator: Equal
+                    value: amd64

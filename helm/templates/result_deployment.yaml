@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:   
+    labels:
+        io.kompose.service: result
+    name: result
+spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 0
+    selector:
+        matchLabels:
+            io.kompose.service: result
+    strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                io.kompose.service: result
+        spec:
+            containers:
+                -
+                    image: {{ .Values.images.result}}
+                    imagePullPolicy: IfNotPresent
+                    name: result
+                    ports:
+-
+                            containerPort: 80
+                            protocol: TCP
+                        -
+                            containerPort: 5858
+                            protocol: TCP
+            restartPolicy: Always
+            terminationGracePeriodSeconds: 30
+            tolerations:
+                -
+                    effect: NoSchedule
+                    key: kubernetes.io/arch
+                    operator: Equal
+                    value: amd64
