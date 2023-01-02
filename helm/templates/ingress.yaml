@@ -5,7 +5,7 @@ items:
   metadata:
     generation: 1
     labels:
-    name: env-unique-ingress
+    name: env-{{ .Values.unique }}-ingress
   spec:
     ingressClassName: bns-nginx
     rules:

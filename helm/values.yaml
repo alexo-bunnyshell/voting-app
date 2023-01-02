@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+unique: "xxxxx"
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
