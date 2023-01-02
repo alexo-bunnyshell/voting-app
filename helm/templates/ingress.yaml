@@ -9,7 +9,7 @@ items:
   spec:
     ingressClassName: bns-nginx
     rules:
-    - host: bunnyapp.bunnyenv.com
+    - host: bunny-{{.Values.unique}}.bunnyenv.com
       http:
         paths:
         - backend:
