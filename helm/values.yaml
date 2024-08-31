@@ -9,7 +9,6 @@ unique: "xxxxx"
 images:
   vote: "__vote_image__"
   result: "__result_image__"
-  bunny: "__bunny_image__"
   worker: "__worker_image__"
 
 image:
